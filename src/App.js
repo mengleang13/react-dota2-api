@@ -7,7 +7,7 @@ import axios from 'axios';
 function App() {
   const [data, setData] = useState([]);
   useEffect(() =>{
-    axios.get("http://api.opendota.com/api/heroes").then((res) => {
+    axios.get("https://api.opendota.com/api/heroes").then((res) => {
       setData(res.data);
       console.log(res.data);
     });
