@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-import { DotaCard } from "./components/dota-card";
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+
+import './style/App.css';
+import { Header } from './components/header';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Dota2Hero from './pages/dota2-Hero';
+import Proplayer from './pages/pro-player';
+import HomePages from './pages/homepages';
 
 function App() {
-  const [data, setData] = useState([]);
-  useEffect(() =>{
-    axios.get("http://api.opendota.com/api/heroes").then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    });
-  }, []);
-  console.log("ggg", data);
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap'}}>
-      {data.map((Value) =>{
-      return <DotaCard hero={Value.localized_name} type={Value.attack_type} leg={Value.legs} />
-    })}
-    </div>
-  );
+ return (
+    <Router>
+      <div>
+        <nav>
+          <Header/>
+        </nav>
+
+        <Switch>
+          <Route path="/Dota2Hero">
+            <Dota2Hero/>
+          </Route>
+          <Route path="/ProPlayer">
+            <Proplayer />
+          </Route>
+          <Route path="/">
+            <HomePages/>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  )
 }
 
 export default App;
