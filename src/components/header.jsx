@@ -14,10 +14,13 @@ export const Header = (props) =>{
         <div>
             <ul style={{ display: "flex", listStyle:"none"}}>
             <Link to="/Dota2Hero">
-                <li style={{paddingRight:30}}>Dota hero</li>
+                <li style={{ paddingRight:30 }}>Dota hero</li>
             </Link>
             <Link to="/ProPlayer">
-                <li>Top Player</li>
+                <li style={{ paddingRight:30 }}>Top Player</li>
+            </Link>
+            <Link to="/crud">
+                <li>Crud</li>
             </Link>
             </ul>
         </div>

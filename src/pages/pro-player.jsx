@@ -5,14 +5,17 @@ import { useEffect, useState } from "react";
 const ProPlayer = () => { 
     const [data, setData] = useState ();
     const [selectPlayer, setSelectplayer] = useState ([]);
+    const [loading, setLoading] = useState(false);
     
     useEffect(() => {
+        setLoading(true);
         axios.get("https://api.opendota.com/api/proPlayers").then((res) =>{console.log(res);
         setData(res.data);
         console.log(res.data)
         })
-        .catch((err) => console.log(err));
-    },[])
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
+    }, []);
     console.log(data);
     const filterTeam = (team) =>{
        const datas = data.filter((data) => data.team_name === team);
@@ -24,7 +27,9 @@ const ProPlayer = () => {
     return (
     <div>
      <div style={{ display: "flex", justifyContent: "center"}}>
+         {loading ?<p>loading!</p> : null}
          <Select
+            disabled={loading}
             onSelect={(value) =>{
 
                 console.log(value);

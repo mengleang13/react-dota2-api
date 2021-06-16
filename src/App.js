@@ -9,6 +9,7 @@ import {
 import Dota2Hero from './pages/dota2-Hero';
 import Proplayer from './pages/pro-player';
 import HomePages from './pages/homepages';
+import CrudPage from './pages/crudpage';
 
 function App() {
  return (
@@ -17,8 +18,10 @@ function App() {
         <nav>
           <Header/>
         </nav>
-
         <Switch>
+          <Route path="/crud">
+            <CrudPage />
+          </Route>
           <Route path="/Dota2Hero">
             <Dota2Hero/>
           </Route>
